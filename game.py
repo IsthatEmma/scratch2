@@ -1,64 +1,27 @@
-import random
-import time
+import time  # Make sure to import the time module
 
+quiz_questions = ["What is 2 + 2?", "What is 4 + 4?", "What is 7 x 2?", "What color is the sky?"]
+quiz_answers = ["4", "8", "14", "Blue"]  
 
-quiz_questions = []
-print("Hello! Welcome to the quiz! Let's do this!!")
+def quiz_question(new_question):
+    for i in range(len(quiz_questions)):
+        print(new_question[i])  # Display question
+        time.sleep(3)  # Wait for 3 seconds before asking for the answer
+        user_answer = input("Your answer: ")  # Ask for the answer after the delay
+        if user_answer == quiz_answers[i]:
+            print("correct")
+        else:
+            print("incorrect")
+        time.sleep(1)  # Optional: add a small delay after each question for a smoother flow
 
+continue_playing = True
 
-def first_question():
-    question_one = "First question! What is 2+2?"
-    print(question_one)
-    user_answer = input("Enter your answer: ")
-
-    if user_answer == "4":
-        print("Hooray! Thats correct! :D")
-    else:
-        print("No sorry!:( Thats incorrect")
-
-    return question_one
-quiz_questions = first_question()
-
-
-def second_question():
-    question_two = ("Second question! What is 4+4?")
-    print(question_two)
-    user_answer = input("Enter your answer: ")
-
-    if user_answer == "8":
-        print("Amazing!! Correct again! :D")
-    else:
-        print("No sorry!:( Thats incorrect")
-
-    return question_two
-quiz_questions = second_question()
-
-def third_question():
-    question_three = ("Third question! What is 7 x 2?")
-    print(question_three)
-    user_answer = input("Enter your answer: ")
-
-    if user_answer == "14":
-        print("Fantastic!! :D")
-    else:
-        print("No sorry!:(")
-
-    return question_three
-quiz_questions = third_question()
-
-
-def last_question():
-    question_four = ("Last Question! What color is the sky")
-    print(question_four)
-    user_answer = input("Enter your answer: ")
-
-    if user_answer == "blue":
-        print("Double Amazing!")
-    else:
-        print("Incorrect! :(")
-
-    return question_four
-quiz_questions = last_question()
-
-print("Thanks for playing my mini quiz game! For all your hard work you get a medal! 🥇")
-
+while continue_playing:
+    play_quiz = input("Hello! Want to play my quiz, Yes or No: ")
+    if play_quiz.lower() == "yes":  # Making the input case-insensitive
+        print("Awesome! Let's start")
+        time.sleep(1)  # Delay after starting the quiz
+        quiz_question(quiz_questions)
+    else: 
+        print("Okay bye! :)")
+        continue_playing = False
